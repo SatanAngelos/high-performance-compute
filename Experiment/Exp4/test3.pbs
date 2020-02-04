@@ -1,0 +1,15 @@
+#PBS -N c
+#PBS -l nodes=16:ppn=32
+#PBS -j oe
+
+echo "This is lhc ex3 lab"$PBS_JOBID@PBS_QUEUE
+cd $PBS_O_WORKDIR
+
+source /public/software/profile.d/mpi_openmpi-intel-2.1.2.sh
+mpiexec -np 1 ./c 0 4 1 2 1024
+mpiexec -np 4 ./c 0 4 1 2 1024
+mpiexec -np 8 ./c 0 4 1 2 1024
+mpiexec -np 16 ./c 0 4 1 2 1024
+mpiexec -np 32 ./c 0 4 1 2 1024
+mpiexec -np 64 ./c 0 4 1 2 1024
+mpiexec -np 128 ./c 0 4 1 2 1024
