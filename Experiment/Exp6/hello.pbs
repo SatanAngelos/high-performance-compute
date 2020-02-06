@@ -1,0 +1,8 @@
+#PBS -N hello                     
+#PBS -l nodes=1:ppn=32:gpus=1
+#PBS -j oe
+#PBS -q gpu
+source /public/software/profile.d/cuda10.0.sh
+cd $PBS_O_WORKDIR
+nvcc hello.cu -o hello 
+./hello
